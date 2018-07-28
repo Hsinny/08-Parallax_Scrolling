@@ -19,9 +19,9 @@
 
 .section-2
   +color($white, $cyan) // 變成$cyan
-  background: linear-gradient(90deg, $cyan 50%, $blue 50%)
-  display: flex
-  justify-content: center 
+  // background: linear-gradient(90deg, $cyan 50%, $blue 50%)
+  // display: flex
+  // justify-content: center 
   // opacity: 0
   transition: background-color 1s // 僅 bg 漸變
 
@@ -127,10 +127,11 @@
 /*------------------------------------*/
  
 .question
-  +size(40%, 100%)
+  +size(50%, 100%)
   background-color: $cyan
   padding: 90px 120px
   box-sizing: border-box
+  display: inline-block
   opacity: 0
   .question-number
     color: $pink
@@ -158,24 +159,30 @@
       +color($cyan, $white)
 
 .animation
-  +size(30%, 100%)
+  +size(50%, 100%)
   background-color: $blue
-  // transform: translateX(100%) transform效能比left好
-  position: relative
+  display: inline-block
+  transform: translateX(150%) // transform效能比left好
+  overflow: hidden
+  position: absolute
+  // lefr: 50%
   .square
     +square(200px, $pink)
-    top: calc( 100vh + 10% ) // 110px 10% 最後顯示的位置
+    top: 10%  // 110px 10% 最後顯示的位置
     left: 10% // 70px  10% 最後顯示的位置
+    transform: translateY(calc(100vh + 10%)) // transform效能比left好
     position: absolute
     
   .circle
     +circle(400px, $black)
-    top: calc( 100vh + 70% ) // 500px
-    // right: calc( 0px - 10% ) 
+    top: 70% // 500px
+    transform: translateY(calc(100vh + 70%))
+    right: calc( 0px - 10% ) 
     position: absolute
 
   .triangle
     +triangle(120px, 70px, $white)
-    top: calc( 100vh + 35% )
+    top: 35%
     right: 0
+    transform: translateY(calc(100vh + 350%))
     // position: absolute

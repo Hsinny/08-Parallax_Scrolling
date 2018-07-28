@@ -365,18 +365,6 @@ html, body {
 .section-2 {
   color: #fff;
   background-color: #1469FF;
-  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #1469FF), color-stop(50%, #0027C8));
-  background: -webkit-linear-gradient(left, #1469FF 50%, #0027C8 50%);
-  background: -o-linear-gradient(left, #1469FF 50%, #0027C8 50%);
-  background: linear-gradient(90deg, #1469FF 50%, #0027C8 50%);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-transition: background-color 1s;
   -o-transition: background-color 1s;
   transition: background-color 1s; }
@@ -390,6 +378,9 @@ html, body {
 .hide {
   display: none; }
 
+/*------------------------------------*/
+/* 形狀 */
+/*------------------------------------*/
 /*------------------------------------*/
 /* Homepage */
 /*------------------------------------*/
@@ -465,12 +456,13 @@ html, body {
 /* Section Q1 */
 /*------------------------------------*/
 .question {
-  width: 40%;
+  width: 50%;
   height: 100%;
   background-color: #1469FF;
   padding: 90px 120px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: inline-block;
   opacity: 0; }
   .question .question-number {
     color: #FF3C82;
@@ -501,17 +493,25 @@ html, body {
       background-color: #fff; }
 
 .animation {
-  width: 30%;
+  width: 50%;
   height: 100%;
   background-color: #0027C8;
-  position: relative; }
+  display: inline-block;
+  -webkit-transform: translateX(150%);
+  -ms-transform: translateX(150%);
+  transform: translateX(150%);
+  overflow: hidden;
+  position: absolute; }
   .animation .square {
     width: 200px;
     height: 200px;
     background-color: #FF3C82;
     z-index: 10;
-    top: calc( 100vh + 10%);
+    top: 10%;
     left: 10%;
+    -webkit-transform: translateY(calc(100vh + 10%));
+    -ms-transform: translateY(calc(100vh + 10%));
+    transform: translateY(calc(100vh + 10%));
     position: absolute; }
   .animation .circle {
     width: 400px;
@@ -519,12 +519,19 @@ html, body {
     background-color: #000;
     border-radius: 50%;
     z-index: 20;
-    top: calc( 100vh + 70%);
+    top: 70%;
+    -webkit-transform: translateY(calc(100vh + 70%));
+    -ms-transform: translateY(calc(100vh + 70%));
+    transform: translateY(calc(100vh + 70%));
+    right: calc( 0px - 10%);
     position: absolute; }
   .animation .triangle {
     border-left: 70px solid transparent;
     border-right: 70px solid transparent;
     border-bottom: 120px solid #fff;
     position: absolute;
-    top: calc( 100vh + 35%);
-    right: 0; }
+    top: 35%;
+    right: 0;
+    -webkit-transform: translateY(calc(100vh + 350%));
+    -ms-transform: translateY(calc(100vh + 350%));
+    transform: translateY(calc(100vh + 350%)); }
