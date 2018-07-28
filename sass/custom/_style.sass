@@ -5,3 +5,177 @@
 /*------------------------------------*/
 /* Layout   
 /*------------------------------------*/ 
+.section 
+  +size(100vw, 100vh)
+  position: absolute
+  top: 0
+  left: 0
+
+.section-1
+  +color($white, $cyan)
+  display: flex
+  justify-content: center 
+  align-items:  center
+
+.section-2
+  +color($white, $cyan) // 變成$cyan
+  background: linear-gradient(90deg, $cyan 50%, $blue 50%)
+  display: flex
+  justify-content: center 
+  // opacity: 0
+  transition: background-color 1s // 僅 bg 漸變
+
+// .container
+//   width: 1020px
+//   margin: 0 auto
+//   display: flex
+  // justify-content: center 
+  // align-items:  center
+
+.active
+  display: flex
+
+.hide 
+  display: none
+
+
+/*------------------------------------*/
+/* 形狀
+/*------------------------------------*/ 
+
+// 半星型  
+=star-helf()
+  width: 235px
+  border:                             // 用 border-top 長邊色塊做梯形
+    top: 135px solid $pink
+    left:  80px solid transparent
+    right: 80px solid transparent
+  position: relative
+  z-index: 30
+  &::before
+    content: '' 
+    +triangle(60px, 40px, $pink)
+    // position: absolute
+    top: calc( 0px - 135px - 60px + 1px )  // 梯形實際高度其實為 0px ， 所以子元素用絕對定位，還是不會自然貼齊最上面
+    transform: translateX(-50%)
+
+// 三角形
+=triangle($width, $height, $color)
+  border:                          // 用 border-bottom 用短邊色塊做三角形
+    left:  $height solid transparent
+    right: $height solid transparent
+    bottom: $width solid $color
+  position: absolute
+  
+
+// 圓形
+=circle($size, $color)
+  +size($size)
+  // max-width: 100%
+  // max-height: auto
+  background-color: $color
+  border-radius: 50% 
+  z-index: 20
+
+// 正方形
+=square($size, $color)
+  +size($size)
+  background-color: $color
+  z-index: 10
+
+
+/*------------------------------------*/
+/* Homepage 
+/*------------------------------------*/ 
+
+.homePage
+  text-align: center
+  .txt
+    z-index: 40
+  .txt-title
+    font-size: 64px
+    font-weight: 600
+    // line-height: 1.4
+  .txt-subtitle
+    font-size: 24px
+    font-weight: 300
+    // line-height: 1.4
+
+  .txt, .star, .circle, .square
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    
+  .star
+    z-index: 30
+    .star-top
+      +star-helf()
+    .star-bottom
+      +star-helf()
+      transform: rotate(-180deg)
+
+  .circle
+    +circle(540px, $blue)
+
+  .square
+    +square(450px, $black)
+
+
+/*------------------------------------*/
+/* Section Q1
+/*------------------------------------*/
+ 
+.question
+  +size(40%, 100%)
+  background-color: $cyan
+  padding: 90px 120px
+  box-sizing: border-box
+  opacity: 0
+  .question-number
+    color: $pink
+    font-size: 64px
+    font-weight: 600
+  .question-title
+    font-size: 36px
+    font-weight: 600
+    letter-spacing: 1px
+  .question-desc
+    color: $blue
+    font-size: 24px
+    font-weight: 300
+    line-height: 1.5
+  .question-option-item
+    font-size: 20px
+    padding: 8px 32px
+    border: 2px solid $white
+    border-radius: 30px
+    text-align: center
+    margin-bottom: 20px
+    cursor: pointer    // hover 手指頭
+    transition: all 0.4s
+    &:hover
+      +color($cyan, $white)
+
+.animation
+  +size(30%, 100%)
+  background-color: $blue
+  // transform: translateX(100%) transform效能比left好
+  position: relative
+  .square
+    +square(200px, $pink)
+    top: calc( 100vh + 10% ) // 110px 10% 最後顯示的位置
+    left: 10% // 70px  10% 最後顯示的位置
+    position: absolute
+    
+  .circle
+    +circle(400px, $black)
+    top: calc( 100vh + 70% ) // 500px
+    // right: calc( 0px - 10% ) 
+    position: absolute
+
+  .triangle
+    +triangle(120px, 70px, $white)
+    top: calc( 100vh + 35% )
+    right: 0
+    // position: absolute
